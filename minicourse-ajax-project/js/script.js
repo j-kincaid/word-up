@@ -1,3 +1,4 @@
+
 function loadData() {
 
     var $body = $('body');
@@ -10,13 +11,6 @@ function loadData() {
     $wikiElem.text("");
     $nytElem.text("");
 
-    var streetStr = $('#street').val();
-    var cityStr = $('city').val();
-    var address = streetStr + ', ' + cityStr;
-
-    $greeeting.text('So, you want to live at ' + address + '?');
-
-
     // load streetview
 
     // YOUR CODE GOES HERE!
@@ -25,3 +19,5 @@ function loadData() {
 };
 
 $('#form-container').submit(loadData);
+
+// loadData();
