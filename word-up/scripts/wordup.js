@@ -76,7 +76,7 @@ function addNewWordSubmission(word) {
  */
 function checkIfWordIsReal(word) {
 
-    // make an AJAX call to the Pearson API
+    // make an AJAX call to the Oxford Dictionary API
     $.ajax({
         // TODO 13 what should the url be?
         url: "www.todo13.com",
@@ -86,7 +86,8 @@ function checkIfWordIsReal(word) {
             // let's print the response to the console so we can take a looksie
             console.log(response);
 
-            // TODO 14
+            // 
+            4
             // Replace the 'true' below.
             // If the response contains any results, then the word is legitimate.
             // Otherwise, it is not.
