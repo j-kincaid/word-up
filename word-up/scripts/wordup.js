@@ -5,7 +5,6 @@
 
 // "a3bd1510a0eaa00a90cbeecace08c090"
 
-
 // ----------------- MODEL -----------------
 
 var GAME_DURATION = 60;
