@@ -1,3 +1,9 @@
+// my key for Oxford dictionary API 
+// Base URL https://od-api.oxforddictionaries.com/api/v1
+
+// Application ID 268dbc3d 
+
+// "a3bd1510a0eaa00a90cbeecace08c090"
 
 
 // ----------------- MODEL -----------------
@@ -268,8 +274,32 @@ $(document).ready(function() {
 
 // borrowing Scrabble's point system
 var scrabblePointsForEachLetter = {
-    a: 1, b: 3, c: 3, d: 2, e: 1, f: 4, g: 2, h: 4, i: 1, j: 8, k: 5, l: 1, m: 3,
-    n: 1, o: 1, p: 3, q: 10, r: 1, s: 1, t: 1, u: 1, v: 4, w: 4, x: 8, y: 4, z: 10
+    a: 1,
+    b: 3,
+    c: 3,
+    d: 2,
+    e: 1,
+    f: 4,
+    g: 2,
+    h: 4,
+    i: 1,
+    j: 8,
+    k: 5,
+    l: 1,
+    m: 3,
+    n: 1,
+    o: 1,
+    p: 3,
+    q: 10,
+    r: 1,
+    s: 1,
+    t: 1,
+    u: 1,
+    v: 4,
+    w: 4,
+    x: 8,
+    y: 4,
+    z: 10
 }
 
 /**
@@ -346,8 +376,7 @@ function currentScore() {
     var wordScores = model.wordSubmissions.map(function(submission) {
         if (submission.isRealWord) {
             return wordScore(submission.word);
-        }
-        else {
+        } else {
             return 0;
         }
     });
