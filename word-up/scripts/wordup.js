@@ -121,7 +121,7 @@ function render() {
 
     // TODO 2
     // Update the curent time remaining on the scoreboard.
-    $("#time-remaining").text(secondsRemaining());
+    $("#time-remaining").text(startTimer());
 
     // if the game has not started yet, just hide the #game container and exit
     if (model.gameHasStarted == false) {
