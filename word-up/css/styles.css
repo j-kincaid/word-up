@@ -24,17 +24,22 @@ main {
 }
 
 .bad-attempt {
-    color: #d9534f; /* Bootstrap "danger" red */
+    color: #d9534f;
+    /* Bootstrap "danger" red */
 }
 
+
 /* A chip to display a letter or a wordSubmission */
+
 .tag-lg {
     margin-right: 2%;
     margin-bottom: 2%;
-    box-shadow: 1px 2px 2px 1px rgba(0,0,0,0.1);
+    box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.1);
 }
 
+
 /* A smaller chip to display the score of a letter or word */
+
 .tag-sm {
     font-size: 14px;
     margin-left: 0.4em;
@@ -63,6 +68,8 @@ input {
 }
 
 input:focus {
-    border: 2px solid #4285F4; /* Bootstrap "primary" blue */
-    outline-color: #4285f4; /* outline is the fuzzy "glow" */
+    border: 2px solid #4285F4;
+    /* Bootstrap "primary" blue */
+    outline-color: #4285f4;
+    /* outline is the fuzzy "glow" */
 }
