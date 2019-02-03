@@ -256,30 +256,30 @@ $(document).ready(function() {
     // Use the jQuery .val method.
 
 
-    $("#textbox").onchange(function() {
-        $() model.currentAttempt
+    $("#word-attempt-form").on(input) {
+        $("#textbox").val(model.currentAttempt());
         render();
     })
 
 
 
-    // when the form is submitted
-    $("#word-attempt-form").submit(function(evt) {
-        // we don't want the page to refresh
-        evt.preventDefault();
+// when the form is submitted
+$("#word-attempt-form").submit(function(evt) {
+    // we don't want the page to refresh
+    evt.preventDefault();
 
-        // add a new word from whatever they typed
-        addNewWordSubmission(model.currentAttempt);
+    // add a new word from whatever they typed
+    addNewWordSubmission(model.currentAttempt);
 
-        // clear away whatever they typed
-        model.currentAttempt = "";
+    // clear away whatever they typed
+    model.currentAttempt = "";
 
-        // re-render
-        render();
-    });
-
-    // initial render
+    // re-render
     render();
+});
+
+// initial render
+render();
 });
 
 
@@ -320,9 +320,12 @@ var scrabblePointsForEachLetter = {
  * meaning it is not a member of the .allowedLetters list from the current model
  */
 function isDisallowedLetter(letter) {
-    // TODO 7
+    // Check TODO 7
     // This should return true if the letter is not an element of
     // the .allowedLetters list in the model
+    str.indexOf(model.allowedLetters) {
+        return true;
+    }
     return false;
 }
 
