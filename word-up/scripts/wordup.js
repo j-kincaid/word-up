@@ -48,6 +48,8 @@ function endGame() {
 }
 
 
+
+
 /**
  * Given a word, adds a new wordSubmission to model.wordSubmissions.
  *
@@ -76,7 +78,7 @@ function addNewWordSubmission(word) {
  */
 function checkIfWordIsReal(word) {
 
-    // make an AJAX call to the Oxford Dictionary API
+    // make an AJAX call to the Pearson API
     $.ajax({
         // TODO 13 what should the url be?
         url: "www.todo13.com",
@@ -86,8 +88,7 @@ function checkIfWordIsReal(word) {
             // let's print the response to the console so we can take a looksie
             console.log(response);
 
-            // 
-            4
+            // TODO 14
             // Replace the 'true' below.
             // If the response contains any results, then the word is legitimate.
             // Otherwise, it is not.
@@ -106,7 +107,6 @@ function checkIfWordIsReal(word) {
     });
 }
 
-
 // ----------------- VIEW -----------------
 
 /**
@@ -121,6 +121,7 @@ function render() {
 
     // TODO 2
     // Update the curent time remaining on the scoreboard.
+
     $("#time-remaining").text(model.secondsRemaining);
 
     // if the game has not started yet, just hide the #game container and exit
@@ -150,11 +151,10 @@ function render() {
 
 
     // Set the value of the textbox
-    $("#textbox").val(model.currentAttempt).focus();
-
+    $("#textbox").val(model.currentAttempt);
     // TODO 3
     // Give focus to the textbox.
-    $("#textbox").focus();
+
 
     // if the current word attempt contains disallowed letters,
     var disallowedLetters = disallowedLettersInWord(model.currentAttempt);
@@ -245,41 +245,29 @@ $(document).ready(function() {
         render();
     });
 
-
     // TODO 6
     // Add another event handler with a callback function.
     // When the textbox content changes,
     // update the .currentAttempt property of the model and re-render
 
-    // Use the jQuery .on method, with an event of "input"
-    //     When the event fires, you should update model.currentAttempt to be equal to the current value of the textbox.
-    // Use the jQuery .val method.
 
+    // when the form is submitted
+    $("#word-attempt-form").submit(function(evt) {
+        // we don't want the page to refresh
+        evt.preventDefault();
 
-    $("#word-attempt-form").on(input) {
-        $("#textbox").val(model.currentAttempt());
+        // add a new word from whatever they typed
+        addNewWordSubmission(model.currentAttempt);
+
+        // clear away whatever they typed
+        model.currentAttempt = "";
+
+        // re-render
         render();
-    })
+    });
 
-
-
-// when the form is submitted
-$("#word-attempt-form").submit(function(evt) {
-    // we don't want the page to refresh
-    evt.preventDefault();
-
-    // add a new word from whatever they typed
-    addNewWordSubmission(model.currentAttempt);
-
-    // clear away whatever they typed
-    model.currentAttempt = "";
-
-    // re-render
+    // initial render
     render();
-});
-
-// initial render
-render();
 });
 
 
@@ -320,12 +308,9 @@ var scrabblePointsForEachLetter = {
  * meaning it is not a member of the .allowedLetters list from the current model
  */
 function isDisallowedLetter(letter) {
-    // Check TODO 7
+    // TODO 7
     // This should return true if the letter is not an element of
     // the .allowedLetters list in the model
-    str.indexOf(model.allowedLetters) {
-        return true;
-    }
     return false;
 }
 
