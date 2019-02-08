@@ -256,6 +256,9 @@ $(document).ready(function() {
         render();
     })
 
+
+
+
     // when the form is submitted
     $("#word-attempt-form").submit(function(evt) {
         // we don't want the page to refresh
@@ -316,7 +319,9 @@ function isDisallowedLetter(letter) {
     // TODO 7
     // This should return true if the letter is not an element of
     // the .allowedLetters list in the model
-    return false;
+
+    return model.allowedLetters.indexOf(letter) == -1;
+
 }
 
 /**
