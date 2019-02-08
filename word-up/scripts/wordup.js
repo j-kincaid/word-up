@@ -168,6 +168,9 @@ function render() {
 
         // TODO 8
         // append the red letter chips to the form
+        $("#word-attempt-form").append(redLetterChips);
+
+
 
     }
 
