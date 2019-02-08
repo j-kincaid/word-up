@@ -251,9 +251,10 @@ $(document).ready(function() {
     // When the textbox content changes,
     // update the .currentAttempt property of the model and re-render
 
-    $("input:text").val(model.currentAttempt);
-    render();
-
+    $("#textbox").on('input', function() {
+        model.currentAttempt = $("#textbox").val();
+        render();
+    })
 
     // when the form is submitted
     $("#word-attempt-form").submit(function(evt) {
