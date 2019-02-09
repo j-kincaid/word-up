@@ -352,8 +352,10 @@ function disallowedLettersInWord(word) {
  */
 function containsOnlyAllowedLetters(word) {
     // TODO 12
+    // model.disallowedLettersInWord == false;
+    return disallowedLettersInWord(word).length == 0;
     // Return the actual answer.
-    return true;
+    // return true;
 }
 
 /**
