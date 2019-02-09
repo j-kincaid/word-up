@@ -153,6 +153,11 @@ function render() {
     // TODO 11
     // Render the word submissions
 
+    // var redLetterChips = map(model.currentAttempt)
+    // $("#word-attempt-form").append(redLetterChips);
+
+    $("#word-submissions").append(model.wordSubmissions.map(wordSubmissionChip));
+
 
     // Set the value of the textbox
     $("#textbox").val(model.currentAttempt);
