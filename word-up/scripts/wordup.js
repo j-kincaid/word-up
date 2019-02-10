@@ -27,6 +27,12 @@ var model = {
     wordSubmissions: []
 }
 
+var api = {
+    root: "https://od-api.oxforddictionaries.com/api/v1",
+    app_id: "268dbc3d",
+    app_key: "	a3bd1510a0eaa00a90cbeecace08c090"
+}
+
 /*
  * Resets the model to a starting state, and then starts the timer
  */
@@ -78,12 +84,22 @@ function addNewWordSubmission(word) {
  */
 function checkIfWordIsReal(word) {
 
-    // make an AJAX call to the Pearson API
+
+    // Use Oxford API
+
     $.ajax({
         // TODO 13 what should the url be?
-        url: "www.todo13.com",
+
+        // No wait! We can still use the Pearson API. It's not deprecated yet. 
+        // url: api.root + "word",
+        // data: {
+        //     app_key: ,
+        //     query: query
+        // },
+
+        url: "http://api.pearson.com/v2/dictionaries/lasde/entries?headword=" + word,
         success: function(response) {
-            console.log("We received a response from Pearson!");
+            // console.log("We received a response from Oxford!");
 
             // let's print the response to the console so we can take a looksie
             console.log(response);
@@ -92,10 +108,24 @@ function checkIfWordIsReal(word) {
             // Replace the 'true' below.
             // If the response contains any results, then the word is legitimate.
             // Otherwise, it is not.
-            var theAnswer = true;
+            var theAnswer = response.results.length > 0;
+
+            console.log(theAnswer);
+
 
             // TODO 15
             // Update the corresponding wordSubmission in the model
+            // theAnswer = true {
+            //     isRealWord.update(model.wordSubmissions);
+            // }
+
+            model.wordSubmissions.forEach(function(submission) {
+                if (submission.word === word) {
+                    submission.isRealWord = theAnswer;
+                }
+            });
+
+            // Wiat there's no error
 
 
             // re-render
