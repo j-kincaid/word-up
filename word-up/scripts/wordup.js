@@ -65,8 +65,19 @@ function endGame() {
 function addNewWordSubmission(word) {
     // Do we already have a wordSubmission with this word?
     // TODO 21
+
+    // model.wordSubmissions.forEach(function(submission) {
+    //     if (submission.word === word) {
+    //         submission.isRealWord = theAnswer;
+    //     }
+    // });
+
     // replace the hardcoded 'false' with the real answer
-    var alreadyUsed = false;
+    var alreadyUsed = model.wordSubmissions.filter(function(submission) {
+        return submission.word == word;
+    }).length > 0;
+
+
 
     // if the word is valid and hasn't already been used, add it
     if (containsOnlyAllowedLetters(word) && alreadyUsed == false) {
@@ -262,8 +273,26 @@ function wordSubmissionChip(wordSubmission) {
         // TODO 17
         // give the scoreChip appropriate text content
 
+        scoreChip.text(wordSubmission.isRealWord ? wordScore(wordSubmission.word) : "X");
+
+
         // TODO 18
         // give the scoreChip appropriate css classes
+
+        // If the word is real, blue chip; if not, red chip. 
+        //Bootstrap classes
+
+        // .bad-attempt
+        // .tag-sm
+
+        // if
+        // scoreChip.addClass(".tag-sm");
+
+        scoreChip
+            .attr("class", "tag tag-sm")
+            .addClass(wordSubmission.isRealWord ? "tag-primary" : "tag-danger");
+
+        // Looking great!
 
         // TODO 16
         // append scoreChip into wordChip
@@ -421,19 +450,25 @@ function wordScore(word) {
     // TODO 19
     // Replace the empty list below.
     // Map the list of letters into a list of scores, one for each letter.
-    var letterScores = [];
+
+    //  a map
+
+
+    var letterScores = letters.map(letterScore);
 
     // return the total sum of the letter scores
     return letterScores.reduce(add, 0);
 }
-
+// Yeah it's keeping score
 
 /**
  * Returns the user's current total score, which is the sum of the
  * scores of all the wordSubmissions whose word is a real dictionary word
  */
 function currentScore() {
+
     // a list of scores, one for each word submission
+
     var wordScores = model.wordSubmissions.map(function(submission) {
         if (submission.isRealWord) {
             return wordScore(submission.word);
@@ -444,7 +479,18 @@ function currentScore() {
 
     // TODO 20
     // return the total sum of the word scores
-    return 0;
+
+    // function getSum(total, wordScores) {
+    //     return total + wordScores;
+    // }
+    // function myFunction(item) {
+    //     document.getElementById("demo").innerHTML = numbers.reduce(getSum);
+    // }
+
+    return wordScores.reduce(add, 0);
+    // improving my Scrabble game!
+
+
 }
 
 
